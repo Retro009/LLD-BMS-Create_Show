@@ -39,7 +39,7 @@ public class ShowServiceImpl implements ShowService{
             throw new FeatureNotSupportedByScreen("Screen Doesnt support Features");
         if(!featureList.containsAll(features))
             throw new FeatureNotSupportedByScreen("Screen Doesnt support Features");
-        if(endTime.before(startTime))
+        if(endTime.before(startTime) || startTime.before(new Date(System.currentTimeMillis())))
             throw new InvalidDateException("Invalid date Exception");
         Show show = new Show();
         show.setMovie(movie);

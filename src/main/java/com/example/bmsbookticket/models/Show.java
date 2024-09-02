@@ -1,9 +1,6 @@
 package com.example.bmsbookticket.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,8 +13,9 @@ public class Show extends BaseModel{
     private Movie movie;
     private Date startTime;
     private Date endTime;
-    @OneToMany
+    @Enumerated(EnumType.ORDINAL)
+    @ElementCollection
     private List<Feature> features;
-    @OneToMany
+    @ManyToOne
     private Screen screen;
 }
